@@ -32,8 +32,8 @@ sub ordinal(Int $input) is export {
 
     if ($input != 0) { # if the input wasn't zero, let's go!
         # this for loop is where the magic happens!
-        for @number -> $hundred {
-            my $last = ?($hundred == @number[*-1]); # are we on the last group of three?
+        for @number.kv -> $index, $hundred {
+            my $last = $index+1 == +@number;
             my $outtmp;
 
             ##STEP 1: Hundreds digit
